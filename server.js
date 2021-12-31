@@ -1,6 +1,7 @@
 var express = require('express');
 var { graphqlHTTP } = require('express-graphql');
 var { buildSchema } = require('graphql');
+require('dotenv').config();
 
 // Schema
 var schema = buildSchema(`
@@ -11,7 +12,7 @@ var schema = buildSchema(`
 
 // Root
 var root = {
-    message: () => 'This is a try-out!'
+    message: () => 'GraphQL is working!'
 }
 
 // Create app
@@ -21,5 +22,5 @@ app.use('/graphql', graphqlHTTP({
     rootValue: root,
     graphiql: true
 }));
-var port = process.env.PORT || 4000
+var port = process.env.PORT
 app.listen(port, ()=> console.log(`Express Graphql Server is running on the port of ${port}`))
