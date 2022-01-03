@@ -65,3 +65,14 @@ var root = {
     course: getCourse,
     courses: getCourses
 }
+
+// Express Server and GraphQL endpoint
+var app = express()
+app.use('/graphql', express_graphql({
+    schema: schema,
+    rootValue: root,
+    graphiql: true
+}))
+
+var port = process.env.PORT2 || 4000
+app.listen(port, ()=> console.log(`Express Graphql Server is running on the port of ${port}`))

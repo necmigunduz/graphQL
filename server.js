@@ -22,5 +22,5 @@ app.use('/graphql', graphqlHTTP({
     rootValue: root,
     graphiql: true
 }));
-var port = process.env.PORT
+var port = process.env.PORT1 || 4000
 app.listen(port, ()=> console.log(`Express Graphql Server is running on the port of ${port}`))
