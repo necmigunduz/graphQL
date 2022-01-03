@@ -1,12 +1,13 @@
 var express = require('express')
-var express_graphql = require('express-graphql')
+var { graphqlHTTP } = require('express-graphql')
 var { buildSchema } = require('graphql')
+require('dotenv').config();
 
 // GraphQL Schema
 var schema = buildSchema(`
     type Query {
         course(id: Int!): Course
-        course(topic: String): [Course]
+        courses(topic: String): [Course]
     },
     type Course {
         id: Int
@@ -68,7 +69,7 @@ var root = {
 
 // Express Server and GraphQL endpoint
 var app = express()
-app.use('/graphql', express_graphql({
+app.use('/graphql', graphqlHTTP({
     schema: schema,
     rootValue: root,
     graphiql: true
