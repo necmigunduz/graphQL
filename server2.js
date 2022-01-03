@@ -44,3 +44,12 @@ var coursesData = [
         url: 'https://codingthesmartway.com/courses/understand-javascript/'
     }
 ]
+
+var getCourse = function(args) {
+    if(args.topic) {
+        var topic = args.topic
+        return coursesData.filter(course => course.topic === topic)
+    } else {
+        return coursesData
+    }
+}
