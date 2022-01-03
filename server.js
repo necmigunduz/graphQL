@@ -13,7 +13,7 @@ var schema = buildSchema(`
 // Root
 var root = {
     message: () => 'GraphQL is working!'
-}
+ }
 
 // Create app
 var app = express()
